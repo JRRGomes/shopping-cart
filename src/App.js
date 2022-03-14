@@ -3,7 +3,7 @@ import Store from './components/Store';
 
 const App = () => {
   return (
-    <div>
+    <div className='container'>
       <Store />
     </div>
   );
