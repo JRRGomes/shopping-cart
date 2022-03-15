@@ -1,6 +1,8 @@
-const ProductsList = ({ products }) => {
-  return products.map(({name, description}) => (
-    <div key={products.id}>{name}: {description}</div>
+import Product from "./Product";
+
+const ProductsList = ({ products, addToCart }) => {
+  return products.map((product) => (
+    <Product product={product}/>
     ))
 };
 
