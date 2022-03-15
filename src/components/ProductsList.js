@@ -6,13 +6,9 @@ const products = [
 ];
 
 const ProductsList = () => {
-  return (
-    <>
-      {products.map(({name, description}) => (
-        <li key={products.id}>{name}: {description}</li>
-      ))}
-    </>
-  )
+  return products.map(({name, description}) => (
+    <div key={products.id}>{name}: {description}</div>
+    ))
 };
 
 export default ProductsList;

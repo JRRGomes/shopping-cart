@@ -1,13 +1,9 @@
 const cart = [];
 
 const ProductsList = () => {
-  return (
-    <>
-      {cart.map(() => (
-        <li key={cart.id}>{cart}</li>
-      ))}
-    </>
-  )
+  return cart.map(() => (
+    <div key={cart.id}>{cart}</div>
+    ))
 };
 
 export default ProductsList;
