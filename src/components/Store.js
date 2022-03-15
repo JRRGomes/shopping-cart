@@ -5,7 +5,15 @@ import Cart from "./Cart";
 import "../styles/elements/_button.css";
 import "../styles/elements/_button-container.css";
 
+const PRODUCTS = [
+  {
+    name: 'Product-1',
+    description: 'this is the first product'
+  }
+];
+
 const Store = () => {
+
 
   const [elementKey, setelementKey] = useState('products');
 
@@ -16,7 +24,7 @@ const Store = () => {
         <button className="button" onClick={() => setelementKey('products')}>Products</button>
         <button className="button" onClick={() => setelementKey('cart')}>Cart</button>
       </div>
-      {elementKey === 'products' && <ProductsList />}
+      {elementKey === 'products' && <ProductsList products = {PRODUCTS} />}
       {elementKey === 'cart' && <Cart />}
     </>
   )
