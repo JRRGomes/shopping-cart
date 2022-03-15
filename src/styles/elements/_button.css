@@ -1,0 +1,21 @@
+.button {
+  background-color: var(--light-grey);
+  color: var(--dark-grey);
+  border-radius: var(--space-unit);
+  border: var(--space-xxx-small) var(--soft-grey) solid;
+  text-decoration: none;
+  font-size: var(--space-x-small);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: var(--space-unit) var(--space-medium) var(--space-unit) 0;
+  padding: var(--space-small);
+}
+
+.button:hover {
+  border-color: var(--dark-grey);
+}
+
+.button:active {
+  border-color: var(--dark-grey);
+  background-color: var(--soft-grey);
+}
