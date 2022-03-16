@@ -1,8 +1,6 @@
-const cart = [];
-
-const ProductsList = () => {
-  return cart.map(() => (
-    <div key={cart.id}>{cart}</div>
+const ProductsList = ({ cartItems }) => {
+  return cartItems.map((item) => (
+    <div key={item.id}>{item.name}: {item.description}</div>
     ))
 };
 

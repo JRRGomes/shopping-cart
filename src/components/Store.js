@@ -9,14 +9,25 @@ const PRODUCTS = [
   {
     name: 'Product-1',
     description: 'this is the first product'
+  },
+  {
+    name: 'Product-2',
+    description: 'this is the second product'
+  },
+  {
+    name: 'Product-3',
+    description: 'this is the third product'
   }
 ];
 
 const Store = () => {
 
-  const addToCart = () => {}
-
   const [elementKey, setelementKey] = useState('products');
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (product) => {
+    !cartItems.includes(product) && setCartItems([...cartItems, product])
+  }
 
   return (
     <>
@@ -25,8 +36,8 @@ const Store = () => {
         <button className="button" onClick={() => setelementKey('products')}>Products</button>
         <button className="button" onClick={() => setelementKey('cart')}>Cart</button>
       </div>
-      {elementKey === 'products' && <ProductsList products = {PRODUCTS} addToCart = {addToCart} />}
-      {elementKey === 'cart' && <Cart />}
+      {elementKey === 'products' && <ProductsList products = {PRODUCTS} addToCart={addToCart}/>}
+      {elementKey === 'cart' && <Cart cartItems = {cartItems}/>}
     </>
   )
 }
