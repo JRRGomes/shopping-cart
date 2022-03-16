@@ -1,17 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ProductsList from "../components/ProductsList";
+import Product from "../components/Product";
 
-describe("ProductsList", () => {
-  
-  it("should render the product name and description", () => {
-    const products = [
-      {
+describe("Product", () => {
+  it("should render the products first object name and description", () => {
+    const product = {
         name: 'Product-1',
         description: 'this is the first product'
-      }
-    ];
-    render(<ProductsList products={products} />)
+      };
+    render(<Product product={product} />)
     expect(screen.getByText('Product-1: this is the first product' )).toBeInTheDocument();
   });
 });

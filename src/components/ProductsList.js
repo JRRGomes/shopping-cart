@@ -1,13 +1,8 @@
-const products = [
-  {
-    name: 'Product-1',
-    description: 'this is the first product'
-  }
-];
+import Product from "./Product";
 
-const ProductsList = () => {
-  return products.map(({name, description}) => (
-    <div key={products.id}>{name}: {description}</div>
+const ProductsList = ({ products, addToCart }) => {
+  return products.map((product) => (
+    <Product key={product.id} product={product} addToCart={addToCart}/>
     ))
 };
 
