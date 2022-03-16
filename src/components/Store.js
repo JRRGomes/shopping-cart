@@ -36,8 +36,8 @@ const Store = () => {
         <button className="button" onClick={() => setelementKey('products')}>Products</button>
         <button className="button" onClick={() => setelementKey('cart')}>Cart</button>
       </div>
-      {elementKey === 'products' && <ProductsList products = {PRODUCTS} addToCart={addToCart}/>}
-      {elementKey === 'cart' && <Cart cartItems = {cartItems}/>}
+      {elementKey === 'products' && <ProductsList products={PRODUCTS} addToCart={addToCart}/>}
+      {elementKey === 'cart' && <Cart cartItems={cartItems}/>}
     </>
   )
 }
