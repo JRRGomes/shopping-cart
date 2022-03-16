@@ -26,6 +26,6 @@ describe("When add to cart button is clicked", () => {
     render(<Product product={product} addToCart={addToCart}/>);
     userEvent.click(screen.getByRole('button', { name: 'Add to cart' }))
 
-    expect(addToCart).toHaveBeenCalled();
+    expect(addToCart).toHaveBeenCalledTimes(1);
   });
 });
