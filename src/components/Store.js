@@ -7,14 +7,17 @@ import "../styles/elements/_button-container.css";
 
 const PRODUCTS = [
   {
+    id: 1,
     name: 'Product-1',
     description: 'this is the first product'
   },
   {
+    id: 2,
     name: 'Product-2',
     description: 'this is the second product'
   },
   {
+    id: 3,
     name: 'Product-3',
     description: 'this is the third product'
   }
