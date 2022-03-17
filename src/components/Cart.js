@@ -1,8 +1,8 @@
-import Product from "./Product"
+import CartItem from "./CartItem";
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, removeFromCart }) => {
   return cartItems.map((item) => (
-    <Product key={item.id} product={item}/>
+    <CartItem key={item.id} item={item}/>
     ))
 };
 
