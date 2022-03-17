@@ -15,17 +15,26 @@ describe("Product", () => {
   });
 
   it("should render a add to cart button", () => {
-    render(<Product product={product} />)
+    const addToCart = jest.fn();
+    render(<Product product={product} addToCart={addToCart}/>)
     expect(screen.getByRole('button', { name: 'Add to cart' })).toBeInTheDocument();
   });
-});
 
-describe("When add to cart button is clicked", () => {
-  it("should dispatch addToCart function", () => {
-    const addToCart = jest.fn();
-    render(<Product product={product} addToCart={addToCart}/>);
-    userEvent.click(screen.getByRole('button', { name: 'Add to cart' }))
+  describe("When add to cart button is clicked", () => {
+    it("should dispatch addToCart function", () => {
+      const addToCart = jest.fn();
+      render(<Product product={product} addToCart={addToCart}/>);
+      userEvent.click(screen.getByRole('button', { name: 'Add to cart' }))
+  
+      expect(addToCart).toHaveBeenCalledTimes(1);
+      expect(addToCart).toHaveBeenCalledWith(product);
+    });
+  });
 
-    expect(addToCart).toHaveBeenCalledTimes(1);
+  describe('when addToCart is not passed', () => {
+    it('does not render add to cart button', () => {
+      render(<Product product={product}/>)
+      expect(screen.queryByText('button', { name: 'Add to cart' })).not.toBeInTheDocument();
+    });
   });
 });
