@@ -2,9 +2,9 @@
 const CartItem = ({ item, removeFromCart }) => {
   return (
     <>
-    <div>{item.name}: {item.description}</div>
-    <button className="button" onClick={()=>removeFromCart(item)}>Remove from cart</button>
-  </>
+      <div>{item.name}: {item.description}</div>
+      <button className="button" onClick={()=>removeFromCart(item.id)}>Remove from cart</button>
+    </>
   )
 };
 

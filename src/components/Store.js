@@ -29,7 +29,14 @@ const Store = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    !cartItems.includes(product) && setCartItems([...cartItems, product])
+    if (!cartItems.includes(product)) {
+      setCartItems([...cartItems, product])
+    }
+  }
+
+  const removeFromCart = (id) => {
+    const currentCart = cartItems.filter(item => item.id !== id);
+    setCartItems(currentCart);
   }
 
   return (
@@ -40,7 +47,7 @@ const Store = () => {
         <button className="button" onClick={() => setelementKey('cart')}>Cart</button>
       </div>
       {elementKey === 'products' && <ProductsList products={PRODUCTS} addToCart={addToCart}/>}
-      {elementKey === 'cart' && <Cart cartItems={cartItems}/>}
+      {elementKey === 'cart' && <Cart cartItems={cartItems} removeFromCart={removeFromCart}/>}
     </>
   )
 }
