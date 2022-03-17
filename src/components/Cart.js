@@ -1,9 +1,9 @@
-const cart = [];
+import Product from "./Product"
 
-const ProductsList = () => {
-  return cart.map(() => (
-    <div key={cart.id}>{cart}</div>
+const Cart = ({ cartItems }) => {
+  return cartItems.map((item) => (
+    <Product key={item.id} product={item}/>
     ))
 };
 
-export default ProductsList;
+export default Cart;
