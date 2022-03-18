@@ -11,7 +11,7 @@ describe("Store", () => {
   describe("When clicking on Add to cart button", () => {
     it("should add the first product to the cart", () => {
       render(<Store />);
-      userEvent.click(screen.queryAllByRole('button', { name: 'Add to cart' })[0]);
+      userEvent.click(screen.getAllByRole('button', { name: 'Add to cart' })[0]);
       userEvent.click(screen.getByRole('button', { name: 'Cart' }));
       expect(screen.getByText('Product-1: this is the first product' )).toBeInTheDocument();
     });
@@ -20,7 +20,7 @@ describe("Store", () => {
   describe("When clicking on remove from cart button", () => {
     it("should remove the added product from the cart", () => {
       render(<Store />);
-      userEvent.click(screen.queryAllByRole('button', { name: 'Add to cart' })[0]);
+      userEvent.click(screen.getAllByRole('button', { name: 'Add to cart' })[0]);
       userEvent.click(screen.getByRole('button', { name: 'Cart' }));
       expect(screen.getByText('Product-1: this is the first product' )).toBeInTheDocument();
   
