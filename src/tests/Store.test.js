@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
 describe("Store", () => {
-  it("should render one product name and description", () => {
+  it("should render products name and description", () => {
     render(<Store />);
     expect(screen.getByText('Product-1: this is the first product' )).toBeInTheDocument();
   });
@@ -24,7 +24,7 @@ describe("Store", () => {
       userEvent.click(screen.getByRole('button', { name: 'Cart' }));
       expect(screen.getByText('Product-1: this is the first product' )).toBeInTheDocument();
   
-      userEvent.click(screen.queryAllByRole('button', { name: 'Remove from cart' })[0]);
+      userEvent.click(screen.getByRole('button', { name: 'Remove from cart' }));
       expect(screen.queryByText('Product-1: this is the first product' )).not.toBeInTheDocument();
     });
   });
