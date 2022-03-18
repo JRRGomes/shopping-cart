@@ -2,9 +2,11 @@
   --main-font: "Montserrat", sans-serif;
 
   --space-unit: 1em;
+  --space-xxxx-small: calc(0.1 * var(--space-unit));
   --space-xxx-small: calc(0.15 * var(--space-unit));
   --space-xx-small: calc(0.25 * var(--space-unit));
   --space-x-small: calc(0.5 * var(--space-unit));
+  --space-smaller: calc(0.6 * var(--space-unit));
   --space-small: calc(0.75 * var(--space-unit));
   --space-minor: calc(0.8 * var(--space-unit));
   --space-medium: calc(1.25 * var(--space-unit));

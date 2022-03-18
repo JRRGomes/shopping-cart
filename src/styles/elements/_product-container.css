@@ -1,0 +1,10 @@
+.product-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: var(--space-xxxx-small);
+  margin: var(--space-unit);
+  border: var(--space-xxx-small) var(--soft-grey) solid;
+  font-size: var(--space-minor);
+  padding: var(--space-unit);
+}

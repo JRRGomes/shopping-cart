@@ -9,6 +9,7 @@
   text-transform: uppercase;
   margin: var(--space-unit) var(--space-medium) var(--space-unit) 0;
   padding: var(--space-small);
+  width: 100%;
 }
 
 .button:hover {
@@ -18,4 +19,9 @@
 .button:active {
   border-color: var(--dark-grey);
   background-color: var(--soft-grey);
+}
+
+.button__add {
+  margin: 0;
+  font-size: var(--space-smaller);
 }
