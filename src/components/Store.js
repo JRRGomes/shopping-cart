@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductsList from "./ProductsList";
 import Cart from "./Cart";
+import Checkout from "./Checkout";
 
 import "../styles/elements/_button.css";
 import "../styles/elements/_button-container.css";
@@ -39,6 +40,10 @@ const Store = () => {
     setCartItems(currentCart);
   }
 
+  const showCheckout = () => {
+    setelementKey('checkout')
+  }
+
   return (
     <>
       <h1>My store</h1>
@@ -47,7 +52,8 @@ const Store = () => {
         <button className="button" onClick={() => setelementKey('cart')}>Cart</button>
       </div>
       {elementKey === 'products' && <ProductsList products={PRODUCTS} addToCart={addToCart}/>}
-      {elementKey === 'cart' && <Cart cartItems={cartItems} removeFromCart={removeFromCart}/>}
+      {elementKey === 'cart' && <Cart cartItems={cartItems} removeFromCart={removeFromCart} showCheckout={showCheckout}/>}
+      {elementKey === 'checkout' && <Checkout />}
     </>
   )
 }

@@ -28,4 +28,13 @@ describe("Store", () => {
       expect(screen.queryByText('Product-1: this is the first product' )).not.toBeInTheDocument();
     });
   });
+
+  describe("When clicking on checkout button", () => {
+    it("should render checkout component", () => {
+      render(<Store />);
+      userEvent.click(screen.getByRole('button', { name: 'Cart' }));
+      userEvent.click(screen.getByRole('button', { name: 'Checkout' }));
+      expect(screen.getByText('Checkout')).toBeInTheDocument();
+    });
+  });
 });
