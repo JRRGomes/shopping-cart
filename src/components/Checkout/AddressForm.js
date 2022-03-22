@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { InputLabel, MenuItem, Select } from '@mui/material';
+import countryStateData from './countries_states.json';
 
 export default function AddressForm() {
   return (
@@ -78,15 +80,19 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <InputLabel id="country-select-label">Country</InputLabel>
+          <Select
             required
-            id="country"
-            name="country"
-            label="Country"
+            labelId="country-select-label"
+            id="country-select"
+            value= '1'
+            label="Country *"
             fullWidth
-            autoComplete="shipping country"
-            variant="standard"
-          />
+            >
+            <MenuItem value={1}>{countryStateData.countries[0].country}</MenuItem>
+            <MenuItem value={2}>{countryStateData.countries[1].country}</MenuItem>
+            <MenuItem value={3}>{countryStateData.countries[3].country}</MenuItem>
+          </Select>
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
