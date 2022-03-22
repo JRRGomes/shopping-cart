@@ -10,7 +10,7 @@ describe("Checkout", () => {
 
   it("should render Shipping address text ", () => {
     render(<Checkout />);
-    expect(screen.getAllByText('Shipping address')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Shipping address')[1]).toBeInTheDocument();
   });
 
   describe("When clicking in Next", () => {
