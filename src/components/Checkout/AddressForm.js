@@ -80,14 +80,13 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <InputLabel id="country-select-label">Country</InputLabel>
+          <InputLabel id="country-select-label">Country *</InputLabel>
           <Select
             required
             labelId="country-select-label"
-            id="country-select"
             value= '1'
-            label="Country *"
             fullWidth
+            variant='standard'
             >
             <MenuItem value={1}>{countryStateData.countries[0].country}</MenuItem>
             <MenuItem value={2}>{countryStateData.countries[1].country}</MenuItem>
@@ -95,13 +94,18 @@ export default function AddressForm() {
           </Select>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
+          <InputLabel id="state-select-label">State/Province/Region *</InputLabel>
+          <Select
+            required
+            labelId="state-select-label"
+            value= '1'
             fullWidth
-            variant="standard"
-          />
+            variant='standard'
+            >
+            <MenuItem value={1}>{countryStateData.countries[0].states[0]}</MenuItem>
+            <MenuItem value={2}>{countryStateData.countries[0].states[1]}</MenuItem>
+            <MenuItem value={3}>{countryStateData.countries[0].states[2]}</MenuItem>
+          </Select>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
