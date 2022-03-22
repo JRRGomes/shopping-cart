@@ -84,13 +84,13 @@ export default function AddressForm() {
           <Select
             required
             labelId="country-select-label"
-            value= '1'
+            value= 'Brazil'
             fullWidth
             variant='standard'
             >
-            <MenuItem value={1}>{countryStateData.countries[0].country}</MenuItem>
-            <MenuItem value={2}>{countryStateData.countries[1].country}</MenuItem>
-            <MenuItem value={3}>{countryStateData.countries[3].country}</MenuItem>
+            {countryStateData.countries.map((countriesObj) => (
+              <MenuItem key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</MenuItem>
+            ))}
           </Select>
         </Grid>
         <Grid item xs={12} sm={6}>
