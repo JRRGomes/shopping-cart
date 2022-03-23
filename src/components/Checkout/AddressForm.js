@@ -5,9 +5,20 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { InputLabel, MenuItem, Select } from '@mui/material';
-import countryStateData from './countries_states.json';
+import countriesData from './countries_states.json';
 
 export default function AddressForm() {
+
+  const [countrySelected, setCountrySelected] = React.useState('')
+
+  const countrySelectedObj = countriesData.countries.find((countryObj)=>(countryObj.country === countrySelected))
+
+  const countryStates = countrySelectedObj ? countrySelectedObj.states : []; 
+
+  const handleCountryChange = (event) => {
+    setCountrySelected(event.target.value)
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -84,11 +95,12 @@ export default function AddressForm() {
           <Select
             required
             labelId="country-select-label"
-            value= 'Brazil'
             fullWidth
             variant='standard'
+            value={countrySelected}
+            onChange={handleCountryChange}
             >
-            {countryStateData.countries.map((countriesObj) => (
+            {countriesData.countries.map((countriesObj) => (
               <MenuItem key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</MenuItem>
             ))}
           </Select>
@@ -98,14 +110,13 @@ export default function AddressForm() {
           <Select
             required
             labelId="state-select-label"
-            value= '1'
             fullWidth
             variant='standard'
             >
-            <MenuItem value={1}>{countryStateData.countries[0].states[0]}</MenuItem>
-            <MenuItem value={2}>{countryStateData.countries[0].states[1]}</MenuItem>
-            <MenuItem value={3}>{countryStateData.countries[0].states[2]}</MenuItem>
-          </Select>
+            {countryStates.map((state) => (
+              <MenuItem key={state} value={state}>{state}</MenuItem>
+            ))}
+            </Select>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
