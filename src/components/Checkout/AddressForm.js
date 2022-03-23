@@ -5,15 +5,15 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { InputLabel, MenuItem, Select } from '@mui/material';
-import countriesData from './countries_states.json';
+import COUNTRIES_STATES from '../../constants/countriesStates.json';
 
 export default function AddressForm() {
 
   const [countrySelected, setCountrySelected] = React.useState('')
 
-  const countrySelectedObj = countriesData.countries.find((countryObj)=>(countryObj.country === countrySelected))
+  const countrySelectedObj = COUNTRIES_STATES.countries.find((countryObj)=>(countryObj.country === countrySelected))
 
-  const countryStates = countrySelectedObj ? countrySelectedObj.states : []; 
+  const countryStates = countrySelectedObj?.states || []; 
 
   const handleCountryChange = (event) => {
     setCountrySelected(event.target.value)
@@ -100,7 +100,7 @@ export default function AddressForm() {
             value={countrySelected}
             onChange={handleCountryChange}
             >
-            {countriesData.countries.map((countriesObj) => (
+            {COUNTRIES_STATES.countries.map((countriesObj) => (
               <MenuItem key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</MenuItem>
             ))}
           </Select>
