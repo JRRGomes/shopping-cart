@@ -3,20 +3,57 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import { InputLabel, MenuItem, Select } from '@mui/material';
 import COUNTRIES_STATES from '../../constants/countriesStates.json';
 
-export default function AddressForm() {
+export default function AddressForm({onChange, formValues, errors}) {
 
-  const [countrySelected, setCountrySelected] = React.useState('')
+  const zip = formValues.zip || ''
 
+  const name = formValues.name || ''
+
+  const lastName = formValues.lastName || ''
+
+  const addressFirst = formValues.addressFirst || ''
+
+  const city = formValues.city || ''
+
+  const countrySelected = formValues.country || ""
+
+  const provinceSelected = formValues.province || ""
+  
   const countrySelectedObj = COUNTRIES_STATES.countries.find((countryObj)=>(countryObj.country === countrySelected))
 
-  const countryStates = countrySelectedObj?.states || []; 
+  const countryStates = countrySelectedObj?.states || [];
+
+  const handleChangeZip = (event) => {
+    onChange('zip', event.target.value)
+  }
+
+  const handleChangeName = (event) => {
+    onChange('name', event.target.value)
+  }
+
+  const handleChangeLastName = (event) => {
+    onChange('lastName', event.target.value)
+  }
+
+  const handleChangeAddressFirst = (event) => {
+    onChange('addressFirst', event.target.value)
+  }
+
+  const handleChangeCity = (event) => {
+    onChange('city', event.target.value)
+  }
 
   const handleCountryChange = (event) => {
-    setCountrySelected(event.target.value)
+    onChange('country', event.target.value)
+  }
+
+  const handleProvinceChange = (event) => {
+    onChange('province', event.target.value)
   }
 
   return (
@@ -24,7 +61,7 @@ export default function AddressForm() {
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} component="form">
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -34,6 +71,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            value={name}
+            onChange={handleChangeName}
+            error={errors.name ? true : false}
+            helperText={errors?.name}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -45,6 +86,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            value={lastName}
+            onChange={handleChangeLastName}
+            error={errors.lastName ? true : false}
+            helperText={errors?.lastName}
           />
         </Grid>
         <Grid item xs={12}>
@@ -56,6 +101,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            value={addressFirst}
+            onChange={handleChangeAddressFirst}
+            error={errors.addressFirst ? true : false}
+            helperText={errors?.addressFirst}
           />
         </Grid>
         <Grid item xs={12}>
@@ -77,6 +126,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
+            value={zip}
+            onChange={handleChangeZip}
+            error={errors?.zip}
+            helperText={errors?.zip}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -88,6 +141,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
+            value={city}
+            onChange={handleChangeCity}
+            error={errors.city ? true : false}
+            helperText={errors?.city}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -104,6 +161,7 @@ export default function AddressForm() {
               <MenuItem key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</MenuItem>
             ))}
           </Select>
+          <FormHelperText>Required field</FormHelperText>
         </Grid>
         <Grid item xs={12} sm={6}>
           <InputLabel id="state-select-label">State/Province/Region *</InputLabel>
@@ -112,11 +170,14 @@ export default function AddressForm() {
             labelId="state-select-label"
             fullWidth
             variant='standard'
+            value={provinceSelected}
+            onChange={handleProvinceChange}
             >
             {countryStates.map((state) => (
               <MenuItem key={state} value={state}>{state}</MenuItem>
             ))}
             </Select>
+            <FormHelperText>Required field</FormHelperText>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
