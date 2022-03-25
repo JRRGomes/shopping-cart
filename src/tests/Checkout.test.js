@@ -13,18 +13,29 @@ describe("Checkout", () => {
     expect(screen.getAllByText('Shipping address')[1]).toBeInTheDocument();
   });
 
-  describe("When clicking in Next", () => {
-    it("should render payment method text ", () => {
-      render(<Checkout />);
-      userEvent.click(screen.getByRole('button', { name: 'Next' }));
-      expect(screen.getByText('Payment method')).toBeInTheDocument();
-    });
+  it("should have a disabled Next button", () => {
+    render(<Checkout />);
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
   });
 
-  describe("When clicking in Next twice", () => {
-    it("should render order summary text ", () => {
+  describe("When clicking in Next", () => {
+    beforeEach(()=>{
       render(<Checkout />);
+      userEvent.type(screen.getByRole('textbox', { name: /first name/i }), 'teste')
+      userEvent.type(screen.getByRole('textbox', { name: /last name/i }), 'teste')
+      userEvent.type(screen.getByRole('textbox', { name: /address line 1/i }), 'teste')
+      userEvent.type(screen.getByRole('textbox', { name: /zip \/ postal code/i }), '1234')
+      userEvent.type(screen.getByRole('textbox', { name: /city/i }), 'teste')
+      userEvent.click(screen.getByRole('button', { name: /country/i }));
+      userEvent.click(screen.getByRole('option', { name: /brazil/i }));
+      userEvent.click(screen.getByRole('button', { name: /state\/province\/region \*/i }));
+      userEvent.click(screen.getByRole('option', { name: /maranhao/i }));
       userEvent.click(screen.getByRole('button', { name: 'Next' }));
+    });
+
+    it("should render payment method text ", () => {
+      expect(screen.getByText('Payment method')).toBeInTheDocument();  
+
       userEvent.click(screen.getByRole('button', { name: 'Next' }));
       expect(screen.getByText('Order summary')).toBeInTheDocument();
     });
