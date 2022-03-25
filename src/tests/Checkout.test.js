@@ -16,7 +16,7 @@ const fillAdressForm = () => {
 
 const fillPaymentForm = () => {
   userEvent.type(screen.getByRole('textbox', { name: /name on card/i }), 'teste')
-  userEvent.type(screen.getByRole('textbox', { name: /card number/i }), 'teste')
+  userEvent.type(screen.getByRole('textbox', { name: /card number/i }), '123456789')
   userEvent.type(screen.getByRole('textbox', { name: /expiry date/i }), '1234')
   userEvent.type(screen.getByRole('textbox', { name: /cvv/i }), '1234')
 }
@@ -66,6 +66,17 @@ describe("Checkout", () => {
       userEvent.click(screen.getByRole('button', { name: 'Next' }));
 
       expect(screen.getByText('Order summary')).toBeInTheDocument();  
+    });
+
+    it("should render the card number masked ", () => {
+      render(<Checkout />);
+      fillAdressForm()
+      userEvent.click(screen.getByRole('button', { name: 'Next' }));
+      fillPaymentForm()
+      userEvent.click(screen.getByRole('button', { name: 'Next' }));
+
+      expect(screen.getByText(/card number/i)).toBeInTheDocument();
+      expect(screen.getByText(/xxxx\-xxxx\-xxxx\-6789/i)).toBeInTheDocument();  
     });
   });
 
