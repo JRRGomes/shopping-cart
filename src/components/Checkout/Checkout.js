@@ -16,14 +16,14 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step) {
+function getStepContent(step, onChange, formValues, errors) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm onChange={onChange} formValues={formValues} errors={errors}/>;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm onChange={onChange} formValues={formValues} errors={errors}/>;
     case 2:
-      return <Review />;
+      return <Review formValues={formValues}/>;
     default:
       throw new Error('Unknown step');
   }
@@ -31,9 +31,84 @@ function getStepContent(step) {
 
 const theme = createTheme();
 
+const getIsFormValid = (formValues, errors, step) => {
+  if(step===0){
+    if(errors.name || !formValues.name){
+      return false
+    }
+    if(errors.lastName || !formValues.lastName){
+      return false
+    }
+    if(errors.addressFirst || !formValues.addressFirst){
+      return false
+    }
+    if(errors.zip || !formValues.zip){
+      return false
+    }
+    if(errors.city || !formValues.city){
+      return false
+    }
+    if(!formValues.province){
+      return false
+    }
+    if(!formValues.country){
+      return false
+    }
+  }
+  if(step===1){
+    if(errors.cardName || !formValues.cardName){
+      return false
+    }
+    if(errors.cardNumber || !formValues.cardNumber){
+      return false
+    }
+    if(errors.expDate || !formValues.expDate){
+      return false
+    }
+    if(!formValues.ccv){
+      return false
+    }
+  }
+    return true
+}
+
+const getFormErrors = (formValues) => {
+  const errors = {}
+  if(formValues.name === ''){
+    errors.name = 'Required field' 
+  }
+  if(formValues.lastName === ''){
+    errors.lastName = 'Required field' 
+  }
+  if(formValues.addressFirst === ''){
+    errors.addressFirst = 'Required field' 
+  }
+  if(formValues.zip === ''){
+    errors.zip = 'Required field' 
+  }
+  if(formValues.city === ''){
+    errors.city = 'Required field' 
+  }
+  if(formValues.cardName === ''){
+    errors.cardName = 'Required field' 
+  }
+  if(formValues.cardNumber === ''){
+    errors.cardNumber = 'Required field' 
+  }
+  if(formValues.expDate === ''){
+    errors.expDate = 'Required field' 
+  }
+  if(formValues.ccv === ''){
+    errors.ccv = 'Required field' 
+  }
+  return errors
+}
+
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
+  const [formValues, setFormValues] = React.useState({});
+  
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -41,6 +116,14 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const onFormChange = (fieldName, fieldValue) => {
+    setFormValues({...formValues, [fieldName]:fieldValue})
+  }
+  
+  const errors = getFormErrors(formValues)
+
+  const isValid = getIsFormValid(formValues, errors, activeStep)
 
   return (
     <ThemeProvider theme={theme}>
@@ -81,7 +164,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, onFormChange, formValues, errors)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -90,6 +173,7 @@ export default function Checkout() {
                   )}
 
                   <Button
+                    disabled={!isValid}
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
