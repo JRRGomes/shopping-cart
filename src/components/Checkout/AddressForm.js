@@ -70,7 +70,7 @@ export default function AddressForm({onChange, formValues, errors}) {
             variant="standard"
             value={name}
             onChange={handleChangeName}
-            error={errors.name ? true : false}
+            error={Boolean(errors.name)}
             helperText={errors?.name}
           />
         </Grid>
@@ -85,7 +85,7 @@ export default function AddressForm({onChange, formValues, errors}) {
             variant="standard"
             value={lastName}
             onChange={handleChangeLastName}
-            error={errors.lastName ? true : false}
+            error={Boolean(errors.lastName)}
             helperText={errors?.lastName}
           />
         </Grid>
@@ -100,7 +100,7 @@ export default function AddressForm({onChange, formValues, errors}) {
             variant="standard"
             value={addressFirst}
             onChange={handleChangeAddressFirst}
-            error={errors.addressFirst ? true : false}
+            error={Boolean(errors.addressFirst)}
             helperText={errors?.addressFirst}
           />
         </Grid>
@@ -127,7 +127,7 @@ export default function AddressForm({onChange, formValues, errors}) {
             variant="standard"
             value={zip}
             onChange={handleChangeZip}
-            error={errors?.zip}
+            error={Boolean(errors.zip)}
             helperText={errors?.zip}
           />
         </Grid>
@@ -142,7 +142,7 @@ export default function AddressForm({onChange, formValues, errors}) {
             variant="standard"
             value={city}
             onChange={handleChangeCity}
-            error={errors.city ? true : false}
+            error={Boolean(errors.city)}
             helperText={errors?.city}
           />
         </Grid>

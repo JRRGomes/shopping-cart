@@ -44,7 +44,7 @@ export default function PaymentForm({onChange, formValues, errors}) {
             variant="standard"
             value={cardName}
             onChange={handleCardName}
-            error={errors.cardName ? true : false}
+            error={Boolean(errors.cardName)}
             helperText={errors?.cardName}
           />
         </Grid>
@@ -58,7 +58,7 @@ export default function PaymentForm({onChange, formValues, errors}) {
             variant="standard"
             value={cardNumber}
             onChange={handleCardNumber}
-            error={errors.cardNumber ? true : false}
+            error={Boolean(errors.cardNumber)}
             helperText={errors?.cardNumber}
           />
         </Grid>
@@ -72,7 +72,7 @@ export default function PaymentForm({onChange, formValues, errors}) {
             variant="standard"
             value={expDate}
             onChange={handleExpDate}
-            error={errors.expDate ? true : false}
+            error={Boolean(errors.expDate)}
             helperText={errors?.expDate}
           />
         </Grid>
@@ -87,7 +87,7 @@ export default function PaymentForm({onChange, formValues, errors}) {
             variant="standard"
             value={ccv}
             onChange={handleCcv}
-            error={errors.ccv ? true : false}
+            error={Boolean(errors.ccv)}
             helperText={errors?.ccv}
           />
         </Grid>
