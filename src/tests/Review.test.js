@@ -16,11 +16,11 @@ const formValues = {
   "ccv": "321"
 }
 
-beforeEach(() => {
-  render(<Review formValues={formValues}/>);
-});
-
 describe("Review", () => {
+  beforeEach(() => {
+    render(<Review formValues={formValues}/>);
+  });
+
   it("should render order summary text", () => {
     expect(screen.getByText('Order summary')).toBeInTheDocument();
   });
