@@ -64,7 +64,7 @@ export default function Review({ formValues }) {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
+          <Typography gutterBottom>{formValues.name} {formValues.lastName}</Typography>
           <Typography gutterBottom>{formValues.addressFirst}, {formValues.addressSecond}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
