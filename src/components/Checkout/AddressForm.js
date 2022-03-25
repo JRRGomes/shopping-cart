@@ -11,21 +11,13 @@ import COUNTRIES_STATES from '../../constants/countriesStates.json';
 export default function AddressForm({onChange, formValues, errors}) {
 
   const zip = formValues.zip || ''
-
   const name = formValues.name || ''
-
   const lastName = formValues.lastName || ''
-
   const addressFirst = formValues.addressFirst || ''
-
   const city = formValues.city || ''
-
   const countrySelected = formValues.country || ""
-
   const provinceSelected = formValues.province || ""
-  
   const countrySelectedObj = COUNTRIES_STATES.countries.find((countryObj)=>(countryObj.country === countrySelected))
-
   const countryStates = countrySelectedObj?.states || [];
 
   const handleChangeZip = (event) => {

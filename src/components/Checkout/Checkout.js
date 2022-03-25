@@ -21,7 +21,7 @@ function getStepContent(step, onChange, formValues, errors) {
     case 0:
       return <AddressForm onChange={onChange} formValues={formValues} errors={errors}/>;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm onChange={onChange} formValues={formValues} errors={errors}/>;
     case 2:
       return <Review />;
     default:
@@ -55,6 +55,20 @@ const getIsFormValid = (formValues, errors, step) => {
       return false
     }
   }
+  if(step===1){
+    if(errors.cardName || !formValues.cardName){
+      return false
+    }
+    if(errors.cardNumber || !formValues.cardNumber){
+      return false
+    }
+    if(errors.expDate || !formValues.expDate){
+      return false
+    }
+    if(!formValues.ccv){
+      return false
+    }
+  }
     return true
 }
 
@@ -62,9 +76,6 @@ const getFormErrors = (formValues) => {
   const errors = {}
   if(formValues.name === ''){
     errors.name = 'Required field' 
-  }
-  if(formValues.lastName === ''){
-    errors.lastName = 'Required field' 
   }
   if(formValues.lastName === ''){
     errors.lastName = 'Required field' 
@@ -77,6 +88,18 @@ const getFormErrors = (formValues) => {
   }
   if(formValues.city === ''){
     errors.city = 'Required field' 
+  }
+  if(formValues.cardName === ''){
+    errors.cardName = 'Required field' 
+  }
+  if(formValues.cardNumber === ''){
+    errors.cardNumber = 'Required field' 
+  }
+  if(formValues.expDate === ''){
+    errors.expDate = 'Required field' 
+  }
+  if(formValues.ccv === ''){
+    errors.ccv = 'Required field' 
   }
   return errors
 }
