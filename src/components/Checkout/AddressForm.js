@@ -14,6 +14,7 @@ export default function AddressForm({onChange, formValues, errors}) {
   const name = formValues.name || ''
   const lastName = formValues.lastName || ''
   const addressFirst = formValues.addressFirst || ''
+  const addressSecond = formValues.addressSecond || ''
   const city = formValues.city || ''
   const countrySelected = formValues.country || ""
   const provinceSelected = formValues.province || ""
@@ -34,6 +35,10 @@ export default function AddressForm({onChange, formValues, errors}) {
 
   const handleChangeAddressFirst = (event) => {
     onChange('addressFirst', event.target.value)
+  }
+  
+  const handleChangeAddressSecond = (event) => {
+    onChange('addressSecond', event.target.value)
   }
 
   const handleChangeCity = (event) => {
@@ -107,6 +112,8 @@ export default function AddressForm({onChange, formValues, errors}) {
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
+            value={addressSecond}
+            onChange={handleChangeAddressSecond}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
