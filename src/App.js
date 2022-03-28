@@ -1,7 +1,11 @@
 import './App.css';
 import Store from './components/Store';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import theme from './theme';
+
+const Button = styled.button`
+  background-color: ${({ theme }) => theme.colors.darkGrey}
+`
 
 const App = () => {
   return (
@@ -9,6 +13,7 @@ const App = () => {
       <div className='container'>
         <Store />
       </div>
+      <Button>Styled Button</Button>
     </ThemeProvider>
   );
 }

@@ -16,7 +16,7 @@ export default function Review({ formValues, cartItems }) {
   ];
 
   const total = cartItems.cartItems.map((item) => Number(item.price))
-    .reduce((item1, item2) => item1 + item2)
+    .reduce((item1, item2) => item1 + item2, 0)
 
   return (
     <React.Fragment>
