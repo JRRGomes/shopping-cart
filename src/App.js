@@ -1,11 +1,15 @@
 import './App.css';
 import Store from './components/Store';
+import { ThemeProvider } from 'styled-components';
+import theme from './theme';
 
 const App = () => {
   return (
-    <div className='container'>
-      <Store />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className='container'>
+        <Store />
+      </div>
+    </ThemeProvider>
   );
 }
 
