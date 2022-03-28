@@ -1,0 +1,18 @@
+  [{
+    "id": 1,
+    "name": "Product-1",
+    "description": "this is the first product",
+    "price": "9.99"
+  }, 
+  {
+    "id": 2,
+    "name": "Product-2",
+    "description": "this is the second product",
+    "price": "12.99"
+  },
+  {
+    "id": 3,
+    "name": "Product-3",
+    "description": "this is the third product",
+    "price": "15.99"
+  }]

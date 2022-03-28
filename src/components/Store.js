@@ -2,27 +2,10 @@ import React, { useState } from "react";
 import ProductsList from "./ProductsList";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
+import PRODUCTS from "../constants/products.json"
 
 import "../styles/elements/_button.css";
 import "../styles/elements/_button-container.css";
-
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'Product-1',
-    description: 'this is the first product'
-  },
-  {
-    id: 2,
-    name: 'Product-2',
-    description: 'this is the second product'
-  },
-  {
-    id: 3,
-    name: 'Product-3',
-    description: 'this is the third product'
-  }
-];
 
 const Store = () => {
 
@@ -53,7 +36,7 @@ const Store = () => {
       </div>
       {elementKey === 'products' && <ProductsList products={PRODUCTS} addToCart={addToCart}/>}
       {elementKey === 'cart' && <Cart cartItems={cartItems} removeFromCart={removeFromCart} showCheckout={showCheckout}/>}
-      {elementKey === 'checkout' && <Checkout />}
+      {elementKey === 'checkout' && <Checkout cartItems={cartItems}/>}
     </>
   )
 }
