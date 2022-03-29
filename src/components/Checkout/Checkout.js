@@ -104,7 +104,7 @@ const getFormErrors = (formValues) => {
   return errors
 }
 
-export default function Checkout(cartItems) {
+export default function Checkout({ cartItems }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const [formValues, setFormValues] = React.useState({});

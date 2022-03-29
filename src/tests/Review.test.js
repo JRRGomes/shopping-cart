@@ -12,7 +12,7 @@ const formValues = {
   "province": "Piaui",
   "cardName": "JRRG",
   "cardNumber": "9876-5432-1236-6544",
-  "expDate": "12",
+  "expDate": "1234",
   "ccv": "321"
 }
 
@@ -66,7 +66,7 @@ describe("Review", () => {
     });
 
     it("should render the correct card expire date value", () => {
-      expect(screen.getByText(/12/i)).toBeInTheDocument();
+      expect(screen.getByText(/1234/i)).toBeInTheDocument();
     });
   });
 });
