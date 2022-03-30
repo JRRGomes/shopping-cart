@@ -2,7 +2,10 @@ const colors = {
   backgroundColor: '#cdf1e4',
   darkGrey: '#333333',
   softGrey: '#a7a7a7',
-  lightGrey: '#dddddd'
+  lightGrey: '#dddddd',
+  softBlue: '#39AEA9',
+  darkBlue: '#557B83',
+  lightBlue: '#A2D5AB',
 };
 
 const space = [
@@ -21,7 +24,7 @@ const space = [
   '24rem',
 ];
 
-const fonts = "'Montserrat', sans-serif";
+const fonts = '"Roboto","Helvetica","Arial",sans-serif';
 
 const fontSizes = [
   '0.25rem',

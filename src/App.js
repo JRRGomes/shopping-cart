@@ -1,15 +1,8 @@
 import './App.css';
 import Store from './components/Store';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import theme from './theme';
-
-const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.darkGrey};
-  color: ${({ theme }) => theme.colors.lightGrey};
-  width: ${({ theme }) => theme.space[8]};
-  height: ${({ theme }) => theme.space[5]};
-  border-radius: ${({ theme }) => theme.radii[2]}
-`
+import { Button, Text} from './components'
 
 const App = () => {
   return (
@@ -18,6 +11,9 @@ const App = () => {
         <Store />
       </div>
       <Button>Styled Button</Button>
+      <Text variant={'h1'}>Checkout -</Text>
+      <Text variant={'h2'}>Checkout -</Text>
+      <Text variant={'h3'}>Checkout</Text>
     </ThemeProvider>
   );
 }
