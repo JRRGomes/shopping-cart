@@ -12,13 +12,32 @@ const formValues = {
   "province": "Piaui",
   "cardName": "JRRG",
   "cardNumber": "9876-5432-1236-6544",
-  "expDate": "12",
+  "expDate": "1234",
   "ccv": "321"
 }
 
+const cartItems = [{
+  "id": 1,
+  "name": "Product-1",
+  "description": "this is the first product",
+  "price": "9.99"
+}, 
+{
+  "id": 2,
+  "name": "Product-2",
+  "description": "this is the second product",
+  "price": "12.99"
+},
+{
+  "id": 3,
+  "name": "Product-3",
+  "description": "this is the third product",
+  "price": "15.99"
+}];
+
 describe("Review", () => {
   beforeEach(() => {
-    render(<Review formValues={formValues}/>);
+    render(<Review formValues={formValues} cartItems={cartItems}/>);
   });
 
   it("should render order summary text", () => {
@@ -27,7 +46,7 @@ describe("Review", () => {
 
   describe("when rendering the shipping and payment details", () => {
     it("should render the shipping text", () => {
-      expect(screen.getAllByText('Shipping')[1]).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /shipping/i })).toBeInTheDocument();
     });
 
     it("should render the correct shipping value Name", () => {
@@ -47,7 +66,7 @@ describe("Review", () => {
     });
 
     it("should render the correct card expire date value", () => {
-      expect(screen.getByText(/12/i)).toBeInTheDocument();
+      expect(screen.getByText(/1234/i)).toBeInTheDocument();
     });
   });
 });
