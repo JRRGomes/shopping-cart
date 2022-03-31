@@ -1,11 +1,12 @@
 const colors = {
-  backgroundColor: '#cdf1e4',
+  backgroundColor: '#FBF8F1',
   darkGrey: '#333333',
   softGrey: '#a7a7a7',
   lightGrey: '#dddddd',
   softBlue: '#39AEA9',
   darkBlue: '#557B83',
   lightBlue: '#A2D5AB',
+  errorRed: '#FF5677',
 };
 
 const space = [
