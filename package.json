@@ -41,8 +41,15 @@
     ]
   },
   "devDependencies": {
+    "babel-jest": "^27.5.1",
     "babel-plugin-styled-components": "^2.0.6",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.2.1"
+    "react-app-rewired": "^2.2.1",
+    "react-test-renderer": "^17.0.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
