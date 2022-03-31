@@ -1,16 +1,19 @@
 import './App.css';
+import { GlobalStyle } from './components';
 import Store from './components/Store';
 import { ThemeProvider } from 'styled-components';
-import theme from './theme';
-import { Button, Text} from './components'
+import theme from '../src/theme';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+      <>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <div className='container'>
             <Store />
           </div>
-    </ThemeProvider>
+        </ThemeProvider>
+      </>
   );
 }
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
-import { InputLabel, MenuItem, Select } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
 import COUNTRIES_STATES from '../../constants/countriesStates.json';
+import { Input, InputLabel, Text } from '../../components'
 
 export default function AddressForm({onChange, formValues, errors}) {
 
@@ -55,17 +55,18 @@ export default function AddressForm({onChange, formValues, errors}) {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Text variant="h3" gutterBottom>
         Shipping address
-      </Typography>
+      </Text>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <InputLabel>First Name *</InputLabel>
+          <Input
             required
+            placeholder='John'
             id="firstName"
             name="firstName"
             label="First name"
-            fullWidth
             autoComplete="given-name"
             variant="standard"
             value={name}
@@ -75,8 +76,10 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <InputLabel>Last Name *</InputLabel>
+          <Input
             required
+            placeholder='Doe'
             id="lastName"
             name="lastName"
             label="Last name"
@@ -90,8 +93,10 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <InputLabel>Address line 1 *</InputLabel>
+          <Input
             required
+            placeholder='Address line 1'
             id="address1"
             name="address1"
             label="Address line 1"
@@ -105,7 +110,9 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <InputLabel>Address line 2</InputLabel>
+          <Input
+            placeholder='Address line 2'
             id="address2"
             name="address2"
             label="Address line 2"
@@ -117,8 +124,10 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <InputLabel>Zip / Postal code *</InputLabel>
+          <Input
             required
+            placeholder='Zip / Postal code'
             id="zip"
             name="zip"
             label="Zip / Postal code"
@@ -132,8 +141,10 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <InputLabel>City *</InputLabel>
+          <Input
             required
+            placeholder='City'
             id="city"
             name="city"
             label="City"
@@ -147,8 +158,9 @@ export default function AddressForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <InputLabel id="country-select-label">Country *</InputLabel>
-          <Select
+          <InputLabel>Country *</InputLabel>
+          <Input
+            as='select'
             required
             labelId="country-select-label"
             fullWidth
@@ -157,14 +169,15 @@ export default function AddressForm({onChange, formValues, errors}) {
             onChange={handleCountryChange}
             >
             {COUNTRIES_STATES.countries.map((countriesObj) => (
-              <MenuItem key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</MenuItem>
+              <option key={countriesObj.country} value={countriesObj.country}>{countriesObj.country}</option>
             ))}
-          </Select>
+          </Input>
           <FormHelperText>Required field</FormHelperText>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <InputLabel id="state-select-label">State/Province/Region *</InputLabel>
-          <Select
+          <InputLabel>State/Province/Region *</InputLabel>
+          <Input
+            as='select'
             required
             labelId="state-select-label"
             fullWidth
@@ -173,9 +186,9 @@ export default function AddressForm({onChange, formValues, errors}) {
             onChange={handleProvinceChange}
             >
             {countryStates.map((state) => (
-              <MenuItem key={state} value={state}>{state}</MenuItem>
+              <option key={state} value={state}>{state}</option>
             ))}
-            </Select>
+            </Input>
             <FormHelperText>Required field</FormHelperText>
         </Grid>
         <Grid item xs={12}>
