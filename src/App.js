@@ -1,5 +1,5 @@
 import './App.css';
-import { GlobalStyle } from './components';
+import GlobalStyle from './components/GlobalStyle';
 import Store from './components/Store';
 import { ThemeProvider } from 'styled-components';
 import theme from '../src/theme';
