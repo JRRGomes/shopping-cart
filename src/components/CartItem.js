@@ -1,9 +1,10 @@
-
+import { Button } from '../components'
+ 
 const CartItem = ({ item, removeFromCart }) => {
   return (
     <>
       <div>{item.name}: {item.description}</div>
-      <button className="button" onClick={()=>removeFromCart(item.id)}>Remove from cart</button>
+      <Button onClick={()=>removeFromCart(item.id)}>Remove from cart</Button>
     </>
   )
 };

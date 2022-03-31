@@ -3,9 +3,11 @@ import styled from 'styled-components';
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.softBlue};
   color: ${({ theme }) => theme.colors.backgroundColor};
-  width: ${({ theme }) => theme.space[8]};
+  min-width: ${({ theme }) => theme.space[7]};
   height: ${({ theme }) => theme.space[5]};
+  padding: ${({ theme }) => theme.space[1]};
   border-radius: ${({ theme }) => theme.radii[2]};
+  margin: ${({ theme }) => theme.space[0]};
 
   &:disabled {
     background-color: ${({ theme }) => theme.colors.lightGrey};

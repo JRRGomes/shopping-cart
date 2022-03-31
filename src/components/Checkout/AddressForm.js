@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
-import { MenuItem, Select } from '@mui/material';
 import COUNTRIES_STATES from '../../constants/countriesStates.json';
 import { Input, InputLabel, Text } from '../../components'
 
