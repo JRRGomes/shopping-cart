@@ -10,18 +10,13 @@ const getFontSize = ({ variant, theme }) => {
 }
 
 const getAlign = ({ align }) => {
-  const alignTypes = {
-    center: 'center',
-    left: 'left',
-    right: 'right',
-  }
-  return alignTypes[align] || 'left'
+  return align || 'left'
 }
 
 const Text = styled.text`
   display: block;
-  font-size: ${(props) => getFontSize(props)};
-  text-align: ${(props) => getAlign(props)};
+  font-size: ${getFontSize};
+  text-align: ${getAlign};
   margin-block-end: ${({ theme }) => theme.space[3]};
   line-height: ${({ theme }) => theme.space[4]};
 `

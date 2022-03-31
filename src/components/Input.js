@@ -14,9 +14,9 @@ const Input = styled.input`
   border-top-style: none;
   border-right-style: none;
   border-left-style: none;
-  border-color: ${(props) => getError(props)};
+  border-color: ${getError};
   margin-block-start: ${({ theme }) => theme.space[2]};
-  padding: ${({ theme }) => theme.space[0]} 0 ${({ theme }) => theme.space[0]};
+  padding: ${({ theme }) => `${theme.space[0]} 0 ${theme.space[0]}`};
 
   &:focus {
     outline: none;
