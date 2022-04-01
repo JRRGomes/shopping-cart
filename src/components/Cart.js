@@ -1,4 +1,5 @@
 import CartItem from "./CartItem";
+import { Button } from "../components";
 
 import '../styles/elements/_button.css'
 
@@ -8,7 +9,7 @@ const Cart = ({ cartItems, removeFromCart, showCheckout }) => {
       {cartItems.map((item) => (
         <CartItem key={item.id} item={item} removeFromCart={removeFromCart}/>
         ))}
-      <button className="button" onClick={showCheckout}>Checkout</button>
+      <Button onClick={showCheckout}>Checkout</Button>
     </>
   )
 };

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { Input, InputLabel, Text } from '../../components';
 
 export default function PaymentForm({onChange, formValues, errors}) {
 
@@ -30,12 +29,13 @@ export default function PaymentForm({onChange, formValues, errors}) {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Text variant="h3" gutterBottom>
         Payment method
-      </Typography>
+      </Text>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <TextField
+          <InputLabel>Card Name *</InputLabel>
+          <Input
             required
             id="cardName"
             label="Name on card"
@@ -49,7 +49,8 @@ export default function PaymentForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <InputLabel>Card Number *</InputLabel>
+          <Input
             required
             id="cardNumber"
             label="Card number"
@@ -63,7 +64,8 @@ export default function PaymentForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <InputLabel>Expiry date *</InputLabel>
+          <Input
             required
             id="expDate"
             label="Expiry date"
@@ -77,7 +79,8 @@ export default function PaymentForm({onChange, formValues, errors}) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <InputLabel>CCV *</InputLabel>
+          <Input
             required
             id="cvv"
             label="CVV"

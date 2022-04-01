@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import { Text } from '../../components'
 
 export default function Review({ formValues, cartItems }) {
 
@@ -20,44 +20,44 @@ export default function Review({ formValues, cartItems }) {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Text variant="h3">
         Order summary
-      </Typography>
+      </Text>
       <List disablePadding>
         {cartItems?.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
             <ListItemText primary={product.name} secondary={product.description} />
-            <Typography variant="body2">${product.price}</Typography>
+            <Text>${product.price}</Text>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+          <Text fontWeight='bold'>
             ${total}
-          </Typography>
+          </Text>
         </ListItem>
       </List>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+          <Text variant="h3" gutterBottom sx={{ mt: 2 }}>
             Shipping
-          </Typography>
-          <Typography gutterBottom>{formValues.name} {formValues.lastName}</Typography>
-          <Typography gutterBottom>{formValues.addressFirst}, {formValues.addressSecond}</Typography>
+          </Text>
+          <Text gutterBottom>{formValues.name} {formValues.lastName}</Text>
+          <Text gutterBottom>{formValues.addressFirst}, {formValues.addressSecond}</Text>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+          <Text variant="h3">
             Payment details
-          </Typography>
+          </Text>
           <Grid container>
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
+                  <Text>{payment.name}</Text>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
+                  <Text>{payment.detail}</Text>
                 </Grid>
               </React.Fragment>
             ))}
